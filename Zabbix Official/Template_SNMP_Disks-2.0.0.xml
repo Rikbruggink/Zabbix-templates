@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+  <version>2.0</version>
+  <date>2012-06-08T18:27:15Z</date>
+  <groups>
+    <group>
+      <name>Templates</name>
+    </group>
+  </groups>
+  <templates>
+    <template>
+      <template>Template SNMP Disks</template>
+      <name>Template SNMP Disks</name>
+      <groups>
+        <group>
+          <name>Templates</name>
+        </group>
+      </groups>
+      <applications>
+        <application>
+          <name>Disk partitions</name>
+        </application>
+      </applications>
+      <items></items>
+      <discovery_rules>
+        <discovery_rule>
+          <name>Disk partitions</name>
+          <type>4</type>
+          <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+          <snmp_oid>HOST-RESOURCES-MIB::hrStorageDescr</snmp_oid>
+          <key>hrStorageDescr</key>
+          <delay>3600</delay>
+          <status>0</status>
+          <allowed_hosts></allowed_hosts>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <delay_flex></delay_flex>
+          <params></params>
+          <ipmi_sensor></ipmi_sensor>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <port></port>
+          <filter>{#SNMPVALUE}:@Storage devices for SNMP discovery</filter>
+          <lifetime>30</lifetime>
+          <description>The rule will discover all dis partitions matching the global regexp "Storage devices for SNMP discovery".\n\n{$SNMP_COMMUNITY} is a global macro.</description>
+          <item_prototypes>
+            <item_prototype>
+              <name>Allocation units for storage $1</name>
+              <type>4</type>
+              <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+              <multiplier>0</multiplier>
+              <snmp_oid>HOST-RESOURCES-MIB::hrStorageAllocationUnits.{#SNMPINDEX}</snmp_oid>
+              <key>hrStorageAllocationUnits[{#SNMPVALUE}]</key>
+              <delay>3600</delay>
+              <history>7</history>
+              <trends>365</trends>
+              <status>0</status>
+              <value_type>3</value_type>
+              <allowed_hosts></allowed_hosts>
+              <units>B</units>
+              <delta>0</delta>
+              <snmpv3_securityname></snmpv3_securityname>
+              <snmpv3_securitylevel>0</snmpv3_securitylevel>
+              <snmpv3_authpassphrase></snmpv3_authpassphrase>
+              <snmpv3_privpassphrase></snmpv3_privpassphrase>
+              <formula>1</formula>
+              <delay_flex>50/1-7,00:00-24:00</delay_flex>
+              <params></params>
+              <ipmi_sensor></ipmi_sensor>
+              <data_type>0</data_type>
+              <authtype>0</authtype>
+              <username></username>
+              <password></password>
+              <publickey></publickey>
+              <privatekey></privatekey>
+              <port></port>
+              <description>The size, in bytes, of the data objects allocated from this pool.  If this entry is monitoring sectors, blocks, buffers, or packets, for example, this number will commonly be greater than one.  Otherwise this number will typically be one.</description>
+              <inventory_link>0</inventory_link>
+              <applications>
+                <application>
+                  <name>Disk partitions</name>
+                </application>
+              </applications>
+              <valuemap></valuemap>
+            </item_prototype>
+            <item_prototype>
+              <name>Description of storage $1</name>
+              <type>4</type>
+              <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+              <multiplier>0</multiplier>
+              <snmp_oid>HOST-RESOURCES-MIB::hrStorageDescr.{#SNMPINDEX}</snmp_oid>
+              <key>hrStorageDescr[{#SNMPVALUE}]</key>
+              <delay>3600</delay>
+              <history>7</history>
+              <trends>365</trends>
+              <status>0</status>
+              <value_type>1</value_type>
+              <allowed_hosts></allowed_hosts>
+              <units></units>
+              <delta>0</delta>
+              <snmpv3_securityname></snmpv3_securityname>
+              <snmpv3_securitylevel>0</snmpv3_securitylevel>
+              <snmpv3_authpassphrase></snmpv3_authpassphrase>
+              <snmpv3_privpassphrase></snmpv3_privpassphrase>
+              <formula>1</formula>
+              <delay_flex>50/1-7,00:00-24:00</delay_flex>
+              <params></params>
+              <ipmi_sensor></ipmi_sensor>
+              <data_type>0</data_type>
+              <authtype>0</authtype>
+              <username></username>
+              <password></password>
+              <publickey></publickey>
+              <privatekey></privatekey>
+              <port></port>
+              <description>A description of the type and instance of the storage described by this entry.</description>
+              <inventory_link>0</inventory_link>
+              <applications>
+                <application>
+                  <name>Disk partitions</name>
+                </application>
+              </applications>
+              <valuemap></valuemap>
+            </item_prototype>
+            <item_prototype>
+              <name>Total disk space on $1</name>
+              <type>15</type>
+              <snmp_community></snmp_community>
+              <multiplier>0</multiplier>
+              <snmp_oid></snmp_oid>
+              <key>hrStorageSizeInBytes[{#SNMPVALUE}]</key>
+              <delay>3600</delay>
+              <history>7</history>
+              <trends>365</trends>
+              <status>0</status>
+              <value_type>3</value_type>
+              <allowed_hosts></allowed_hosts>
+              <units>B</units>
+              <delta>0</delta>
+              <snmpv3_securityname></snmpv3_securityname>
+              <snmpv3_securitylevel>0</snmpv3_securitylevel>
+              <snmpv3_authpassphrase></snmpv3_authpassphrase>
+              <snmpv3_privpassphrase></snmpv3_privpassphrase>
+              <formula>1</formula>
+              <delay_flex>50/1-7,00:00-24:00</delay_flex>
+              <params>last("hrStorageSize[{#SNMPVALUE}]") * last("hrStorageAllocationUnits[{#SNMPVALUE}]")</params>
+              <ipmi_sensor></ipmi_sensor>
+              <data_type>0</data_type>
+              <authtype>0</authtype>
+              <username></username>
+              <password></password>
+              <publickey></publickey>
+              <privatekey></privatekey>
+              <port></port>
+              <description>This is a calculated item, we need it to get total disk space in bytes.</description>
+              <inventory_link>0</inventory_link>
+              <applications>
+                <application>
+                  <name>Disk partitions</name>
+                </application>
+              </applications>
+              <valuemap></valuemap>
+            </item_prototype>
+            <item_prototype>
+              <name>Total disk space on $1 in units</name>
+              <type>4</type>
+              <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+              <multiplier>0</multiplier>
+              <snmp_oid>HOST-RESOURCES-MIB::hrStorageSize.{#SNMPINDEX}</snmp_oid>
+              <key>hrStorageSize[{#SNMPVALUE}]</key>
+              <delay>3600</delay>
+              <history>7</history>
+              <trends>365</trends>
+              <status>0</status>
+              <value_type>3</value_type>
+              <allowed_hosts></allowed_hosts>
+              <units>units</units>
+              <delta>0</delta>
+              <snmpv3_securityname></snmpv3_securityname>
+              <snmpv3_securitylevel>0</snmpv3_securitylevel>
+              <snmpv3_authpassphrase></snmpv3_authpassphrase>
+              <snmpv3_privpassphrase></snmpv3_privpassphrase>
+              <formula>1</formula>
+              <delay_flex>50/1-7,00:00-24:00</delay_flex>
+              <params></params>
+              <ipmi_sensor></ipmi_sensor>
+              <data_type>0</data_type>
+              <authtype>0</authtype>
+              <username></username>
+              <password></password>
+              <publickey></publickey>
+              <privatekey></privatekey>
+              <port></port>
+              <description>The size of the storage represented by this entry, in units of hrStorageAllocationUnits. This object is writable to allow remote configuration of the size of the storage area in those cases where such an operation makes sense and is possible on the underlying system. For example, the amount of main memory allocated to a buffer pool might be modified or the amount of disk space allocated to virtual memory might be modified.</description>
+              <inventory_link>0</inventory_link>
+              <applications>
+                <application>
+                  <name>Disk partitions</name>
+                </application>
+              </applications>
+              <valuemap></valuemap>
+            </item_prototype>
+            <item_prototype>
+              <name>Used disk space on $1</name>
+              <type>15</type>
+              <snmp_community></snmp_community>
+              <multiplier>0</multiplier>
+              <snmp_oid></snmp_oid>
+              <key>hrStorageUsedInBytes[{#SNMPVALUE}]</key>
+              <delay>60</delay>
+              <history>7</history>
+              <trends>365</trends>
+              <status>0</status>
+              <value_type>3</value_type>
+              <allowed_hosts></allowed_hosts>
+              <units>B</units>
+              <delta>0</delta>
+              <snmpv3_securityname></snmpv3_securityname>
+              <snmpv3_securitylevel>0</snmpv3_securitylevel>
+              <snmpv3_authpassphrase></snmpv3_authpassphrase>
+              <snmpv3_privpassphrase></snmpv3_privpassphrase>
+              <formula>1</formula>
+              <delay_flex>50/1-7,00:00-24:00</delay_flex>
+              <params>last("hrStorageUsed[{#SNMPVALUE}]") * last("hrStorageAllocationUnits[{#SNMPVALUE}]")</params>
+              <ipmi_sensor></ipmi_sensor>
+              <data_type>0</data_type>
+              <authtype>0</authtype>
+              <username></username>
+              <password></password>
+              <publickey></publickey>
+              <privatekey></privatekey>
+              <port></port>
+              <description>This is a calculated item, we need it to get used disk space in bytes.</description>
+              <inventory_link>0</inventory_link>
+              <applications>
+                <application>
+                  <name>Disk partitions</name>
+                </application>
+              </applications>
+              <valuemap></valuemap>
+            </item_prototype>
+            <item_prototype>
+              <name>Used disk space on $1 in units</name>
+              <type>4</type>
+              <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+              <multiplier>0</multiplier>
+              <snmp_oid>HOST-RESOURCES-MIB::hrStorageUsed.{#SNMPINDEX}</snmp_oid>
+              <key>hrStorageUsed[{#SNMPVALUE}]</key>
+              <delay>60</delay>
+              <history>7</history>
+              <trends>365</trends>
+              <status>0</status>
+              <value_type>3</value_type>
+              <allowed_hosts></allowed_hosts>
+              <units>units</units>
+              <delta>0</delta>
+              <snmpv3_securityname></snmpv3_securityname>
+              <snmpv3_securitylevel>0</snmpv3_securitylevel>
+              <snmpv3_authpassphrase></snmpv3_authpassphrase>
+              <snmpv3_privpassphrase></snmpv3_privpassphrase>
+              <formula>1</formula>
+              <delay_flex>50/1-7,00:00-24:00</delay_flex>
+              <params></params>
+              <ipmi_sensor></ipmi_sensor>
+              <data_type>0</data_type>
+              <authtype>0</authtype>
+              <username></username>
+              <password></password>
+              <publickey></publickey>
+              <privatekey></privatekey>
+              <port></port>
+              <description>The amount of the storage represented by this entry that is allocated, in units of hrStorageAllocationUnits.</description>
+              <inventory_link>0</inventory_link>
+              <applications>
+                <application>
+                  <name>Disk partitions</name>
+                </application>
+              </applications>
+              <valuemap></valuemap>
+            </item_prototype>
+          </item_prototypes>
+          <trigger_prototypes>
+            <trigger_prototype>
+              <expression>{Template SNMP Disks:hrStorageUsed[{#SNMPVALUE}].last(0)} / {Template SNMP Disks:hrStorageSize[{#SNMPVALUE}].last(0)} &gt; 0.8</expression>
+              <name>Free disk space is less than 20% on volume {#SNMPVALUE}</name>
+              <url></url>
+              <status>0</status>
+              <priority>2</priority>
+              <description></description>
+              <type>0</type>
+            </trigger_prototype>
+          </trigger_prototypes>
+          <graph_prototypes>
+            <graph_prototype>
+              <name>Disk space usage {#SNMPVALUE}</name>
+              <width>600</width>
+              <height>340</height>
+              <yaxismin>0.0000</yaxismin>
+              <yaxismax>0.0000</yaxismax>
+              <show_work_period>0</show_work_period>
+              <show_triggers>0</show_triggers>
+              <type>2</type>
+              <show_legend>1</show_legend>
+              <show_3d>1</show_3d>
+              <percent_left>0.0000</percent_left>
+              <percent_right>0.0000</percent_right>
+              <ymin_type_1>0</ymin_type_1>
+              <ymax_type_1>0</ymax_type_1>
+              <ymin_item_1>0</ymin_item_1>
+              <ymax_item_1>0</ymax_item_1>
+              <graph_items>
+                <graph_item>
+                  <sortorder>0</sortorder>
+                  <drawtype>0</drawtype>
+                  <color>00C800</color>
+                  <yaxisside>0</yaxisside>
+                  <calc_fnc>2</calc_fnc>
+                  <type>2</type>
+                  <item>
+                    <host>Template SNMP Disks</host>
+                    <key>hrStorageSizeInBytes[{#SNMPVALUE}]</key>
+                  </item>
+                </graph_item>
+                <graph_item>
+                  <sortorder>1</sortorder>
+                  <drawtype>0</drawtype>
+                  <color>C80000</color>
+                  <yaxisside>0</yaxisside>
+                  <calc_fnc>2</calc_fnc>
+                  <type>0</type>
+                  <item>
+                    <host>Template SNMP Disks</host>
+                    <key>hrStorageUsedInBytes[{#SNMPVALUE}]</key>
+                  </item>
+                </graph_item>
+              </graph_items>
+            </graph_prototype>
+          </graph_prototypes>
+        </discovery_rule>
+      </discovery_rules>
+      <macros></macros>
+      <templates></templates>
+      <screens></screens>
+    </template>
+  </templates>
+</zabbix_export>

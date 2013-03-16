@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+  <version>2.0</version>
+  <date>2012-06-08T18:27:13Z</date>
+  <groups>
+    <group>
+      <name>Templates</name>
+    </group>
+  </groups>
+  <templates>
+    <template>
+      <template>Template App Zabbix Agent</template>
+      <name>Template App Zabbix Agent</name>
+      <groups>
+        <group>
+          <name>Templates</name>
+        </group>
+      </groups>
+      <applications>
+        <application>
+          <name>Zabbix agent</name>
+        </application>
+      </applications>
+      <items>
+        <item>
+          <name>Agent ping</name>
+          <type>0</type>
+          <snmp_community></snmp_community>
+          <multiplier>0</multiplier>
+          <snmp_oid></snmp_oid>
+          <key>agent.ping</key>
+          <delay>60</delay>
+          <history>7</history>
+          <trends>365</trends>
+          <status>0</status>
+          <value_type>3</value_type>
+          <allowed_hosts></allowed_hosts>
+          <units></units>
+          <delta>0</delta>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <formula>1</formula>
+          <delay_flex></delay_flex>
+          <params></params>
+          <ipmi_sensor></ipmi_sensor>
+          <data_type>0</data_type>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <port></port>
+          <description>The agent always returns 1 for this item. It could be used in combination with nodata() for availability check.</description>
+          <inventory_link>0</inventory_link>
+          <applications>
+            <application>
+              <name>Zabbix agent</name>
+            </application>
+          </applications>
+          <valuemap>
+            <name>Zabbix agent ping status</name>
+          </valuemap>
+        </item>
+        <item>
+          <name>Host name of zabbix_agentd running</name>
+          <type>0</type>
+          <snmp_community></snmp_community>
+          <multiplier>0</multiplier>
+          <snmp_oid></snmp_oid>
+          <key>agent.hostname</key>
+          <delay>3600</delay>
+          <history>7</history>
+          <trends>365</trends>
+          <status>0</status>
+          <value_type>1</value_type>
+          <allowed_hosts></allowed_hosts>
+          <units></units>
+          <delta>0</delta>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <formula>1</formula>
+          <delay_flex></delay_flex>
+          <params></params>
+          <ipmi_sensor></ipmi_sensor>
+          <data_type>0</data_type>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <port></port>
+          <description></description>
+          <inventory_link>0</inventory_link>
+          <applications>
+            <application>
+              <name>Zabbix agent</name>
+            </application>
+          </applications>
+          <valuemap></valuemap>
+        </item>
+        <item>
+          <name>Version of zabbix_agent(d) running</name>
+          <type>0</type>
+          <snmp_community></snmp_community>
+          <multiplier>0</multiplier>
+          <snmp_oid></snmp_oid>
+          <key>agent.version</key>
+          <delay>3600</delay>
+          <history>7</history>
+          <trends>365</trends>
+          <status>0</status>
+          <value_type>1</value_type>
+          <allowed_hosts></allowed_hosts>
+          <units></units>
+          <delta>0</delta>
+          <snmpv3_securityname></snmpv3_securityname>
+          <snmpv3_securitylevel>0</snmpv3_securitylevel>
+          <snmpv3_authpassphrase></snmpv3_authpassphrase>
+          <snmpv3_privpassphrase></snmpv3_privpassphrase>
+          <formula>1</formula>
+          <delay_flex></delay_flex>
+          <params></params>
+          <ipmi_sensor></ipmi_sensor>
+          <data_type>0</data_type>
+          <authtype>0</authtype>
+          <username></username>
+          <password></password>
+          <publickey></publickey>
+          <privatekey></privatekey>
+          <port></port>
+          <description></description>
+          <inventory_link>0</inventory_link>
+          <applications>
+            <application>
+              <name>Zabbix agent</name>
+            </application>
+          </applications>
+          <valuemap></valuemap>
+        </item>
+      </items>
+      <discovery_rules></discovery_rules>
+      <macros></macros>
+      <templates></templates>
+      <screens></screens>
+    </template>
+  </templates>
+  <triggers>
+    <trigger>
+      <expression>{Template App Zabbix Agent:agent.hostname.diff(0)}&gt;0</expression>
+      <name>Host name of zabbix_agentd was changed on {HOSTNAME}</name>
+      <url></url>
+      <status>0</status>
+      <priority>1</priority>
+      <description></description>
+      <type>0</type>
+      <dependencies></dependencies>
+    </trigger>
+    <trigger>
+      <expression>{Template App Zabbix Agent:agent.version.diff(0)}&gt;0</expression>
+      <name>Version of zabbix_agent(d) was changed on {HOSTNAME}</name>
+      <url></url>
+      <status>0</status>
+      <priority>1</priority>
+      <description></description>
+      <type>0</type>
+      <dependencies></dependencies>
+    </trigger>
+    <trigger>
+      <expression>{Template App Zabbix Agent:agent.ping.nodata(5m)}=1</expression>
+      <name>Zabbix agent on {HOSTNAME} is unreachable for 5 minutes</name>
+      <url></url>
+      <status>0</status>
+      <priority>3</priority>
+      <description></description>
+      <type>0</type>
+      <dependencies></dependencies>
+    </trigger>
+  </triggers>
+</zabbix_export>
