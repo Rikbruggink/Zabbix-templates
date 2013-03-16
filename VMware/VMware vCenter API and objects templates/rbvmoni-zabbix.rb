@@ -151,6 +151,15 @@ class VSphere < RbVmomi::VIM
       $log.error(exc)
       exit
     end
+
+    begin
+      @sc = @vim.serviceContent.viewManager
+    rescue => exc
+      p exc
+      $log.error(exc)
+      exit
+    end
+
   end
 
 
@@ -211,7 +220,7 @@ class VSphere < RbVmomi::VIM
       end
 
     when "vm"
-      @dc.vmFolder.childEntity.grep(RbVmomi::VIM::VirtualMachine).each do |stat|
+      @sc.CreateContainerView({:container => @vim.rootFolder ,:type => ['VirtualMachine'], :recursive => true}).view.each do |stat|
         newname = stat.name.gsub(/:/,"-")
         stat_fileName = "v_#{newname}"
         new_list << newname unless File.exist?($filePath + stat_fileName)
@@ -232,6 +241,7 @@ class VSphere < RbVmomi::VIM
           "vm-UncommittedStorage" => stat.summary.storage.uncommitted,
           "vm-UsedStorage" => stat.summary.storage.committed,
           "vm-UnsharedStorage" => stat.summary.storage.unshared,
+	      "vm-Storagelocation" => stat.summary.config.vmPathName,
           "vm-Uptime" => stat.summary.quickStats.uptimeSeconds
         }
         writefile(stat_fileName, statData)
@@ -295,7 +305,7 @@ $filePath = FILEPATH + "/stats/"
 FileUtils.mkdir_p($filePath) unless File.exists?($filePath)
 logPath = FILEPATH + "/logs/"
 FileUtils.mkdir_p(logPath) unless File.exists?(logPath)
-$log = Logger.new(logPath + 'test.log', 'weekly')
+$log = Logger.new(logPath + 'rbvmoni.log', 'weekly')
 
 
 stats_file_age_check(3600 * 24)
@@ -306,4 +316,4 @@ ds.get_host_status("host")
 ds.get_host_status("ds")
 ds.get_host_status("vm")
 
-puts 0
+
