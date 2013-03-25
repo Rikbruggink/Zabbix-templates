@@ -1,0 +1,1 @@
+placeholder for upcomming Zabbix 2.2 version.
