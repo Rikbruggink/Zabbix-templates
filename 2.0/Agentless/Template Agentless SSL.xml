@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>Template SSL Cert Check External</template>
-            <name>Template SSL Cert Check External</name>
+            <template>Template APP SSL Cert Check External</template>
+            <name>Template APP SSL Cert Check External</name>
             <groups>
                 <group>
                     <name>Templates</name>
